@@ -24,7 +24,7 @@ public class ContextFragmentWriter extends AbstractAspectFragmentWriter {
     }
 
     @Override
-    protected void writeElement(final AspectElement element, final JsonWriter w) throws IOException {
+    public void writeElement(final AspectElement element, final JsonWriter w) throws IOException {
         final ContextElement e = (ContextElement) element;
         w.writeStartObject();
         for (final Map.Entry<String, String> entry : e.getContextKeyValues().entrySet()) {

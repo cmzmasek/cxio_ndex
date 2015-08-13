@@ -23,7 +23,7 @@ public class ProfileFragmentWriter extends AbstractAspectFragmentWriter {
     }
 
     @Override
-    protected void writeElement(final AspectElement element, final JsonWriter w) throws IOException {
+    public void writeElement(final AspectElement element, final JsonWriter w) throws IOException {
         final ProfileElement e = (ProfileElement) element;
         w.writeStartObject();
         w.writeStringFieldIfNotEmpty(ProfileElement.PROFILE_NAME, e.getName());
