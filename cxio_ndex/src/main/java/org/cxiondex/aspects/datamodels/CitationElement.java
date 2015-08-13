@@ -2,7 +2,7 @@ package org.cxiondex.aspects.datamodels;
 
 import org.cxio.core.interfaces.AspectElement;
 
-public abstract class CitationElement implements AspectElement {
+public class CitationElement implements AspectElement {
 
     protected static final String CONTRIBUTORS              = "contributors";
     protected static final String IDENTIFIER                = "identifier";
@@ -22,6 +22,12 @@ public abstract class CitationElement implements AspectElement {
     protected static final String TITLE                     = "title";
     protected static final String TYPE                      = "type";
     public final static String    NAME                      = "Citations";
+    
+    
+    @Override
+    public String getAspectName() {
+        return NAME;
+    }
    
 
 }
