@@ -8,7 +8,7 @@ import org.cxio.core.interfaces.AspectElement;
 
 public final class ContextElement implements AspectElement {
 
-    public final static String              NAME = "Context";
+    public final static String              NAME = "context";
 
     private final SortedMap<String, String> _key_values;
 

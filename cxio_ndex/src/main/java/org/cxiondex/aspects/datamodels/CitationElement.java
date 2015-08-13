@@ -21,7 +21,7 @@ public class CitationElement implements AspectElement {
     protected static final String PROPERTY_VALUE_ID         = "valueId";
     protected static final String TITLE                     = "title";
     protected static final String TYPE                      = "type";
-    public final static String    NAME                      = "Citations";
+    public final static String    NAME                      = "citations";
     
     
     @Override

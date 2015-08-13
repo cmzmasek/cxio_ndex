@@ -1,10 +1,11 @@
 package org.cxiondex.aspects.datamodels;
 
 import org.cxio.core.interfaces.AspectElement;
+import org.cxio.util.Util;
 
 public final class ProfileElement implements AspectElement {
 
-    public final static String NAME         = "Profile";
+    public final static String NAME         = "profile";
     public final static String PROFILE_NAME = "name";
     public final static String PROFILE_DESC = "desc";
     private final String       _name;
@@ -16,6 +17,12 @@ public final class ProfileElement implements AspectElement {
     }
 
     public ProfileElement(final String name, final String description) {
+        if ( Util.isEmpty(name)) {
+            throw new IllegalArgumentException("profile name must not be null or empty");
+        }
+        if ( Util.isEmpty(description)) {
+            throw new IllegalArgumentException("profile description must not be null or empty");
+        }
         _name = name;
         _desc = description;
     }

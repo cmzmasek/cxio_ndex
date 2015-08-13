@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.cxio.aspects.writers.AbstractAspectFragmentWriter;
-import org.cxio.core.JsonWriter;
+import org.cxio.util.JsonWriter;
 import org.cxio.core.interfaces.AspectElement;
 import org.cxiondex.aspects.datamodels.ContextElement;
 
