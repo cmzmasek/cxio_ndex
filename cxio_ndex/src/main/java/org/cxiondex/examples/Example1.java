@@ -14,9 +14,6 @@ import org.cxio.aspects.datamodels.NodesElement;
 import org.cxio.aspects.readers.CartesianLayoutFragmentReader;
 import org.cxio.aspects.readers.EdgesFragmentReader;
 import org.cxio.aspects.readers.NodesFragmentReader;
-import org.cxio.aspects.writers.CartesianLayoutFragmentWriter;
-import org.cxio.aspects.writers.EdgesFragmentWriter;
-import org.cxio.aspects.writers.NodesFragmentWriter;
 import org.cxio.core.CxReader;
 import org.cxio.core.CxWriter;
 import org.cxio.core.interfaces.AspectElement;
@@ -30,16 +27,16 @@ import org.cxiondex.aspects.writers.ContextFragmentWriter;
 import org.cxiondex.aspects.writers.ProfileFragmentWriter;
 
 public class Example1 {
-    
+
     public static void main(final String[] args) throws IOException {
 
         // Creating same AspectElements and adding them to Lists (representing
         // AspectFragments)
         // --------------------------------------------------------------------
-        
+
         final List<AspectElement> profile_elements = new ArrayList<AspectElement>();
-        profile_elements.add(new ProfileElement("mouse net", "network of mouse interactions") );
-        
+        profile_elements.add(new ProfileElement("mouse net", "network of mouse interactions"));
+
         final List<AspectElement> context_elements = new ArrayList<AspectElement>();
         final ContextElement context = new ContextElement();
         context.put("key 1", "value 1");
@@ -47,7 +44,7 @@ public class Example1 {
         context.put("key 3", "value 3");
         context.put("key 4", "value 4");
         context_elements.add(context);
-        
+
         final List<AspectElement> edges_elements = new ArrayList<AspectElement>();
         edges_elements.add(new EdgesElement("edge0", "node0", "node1"));
         edges_elements.add(new EdgesElement("edge1", "node0", "node2"));
@@ -61,22 +58,18 @@ public class Example1 {
         cartesian_elements.add(new CartesianLayoutElement("node0", 12, 21, 1));
         cartesian_elements.add(new CartesianLayoutElement("node1", 42, 23, 2));
         cartesian_elements.add(new CartesianLayoutElement("node2", 34, 23, 3));
-        
 
         // Writing to CX
         // -------------
         final OutputStream out = new ByteArrayOutputStream();
 
-        final CxWriter w = CxWriter.createInstance(out, true);
-        
         final String time_stamp = Util.getCurrentDate();
-        
+
+        final CxWriter w = CxWriter.createInstanceWithAllAvailableWriters(out, true, time_stamp);
+
         w.addAspectFragmentWriter(ProfileFragmentWriter.createInstance(time_stamp));
         w.addAspectFragmentWriter(ContextFragmentWriter.createInstance(time_stamp));
-        w.addAspectFragmentWriter(NodesFragmentWriter.createInstance(time_stamp));
-        w.addAspectFragmentWriter(EdgesFragmentWriter.createInstance(time_stamp));
-        w.addAspectFragmentWriter(CartesianLayoutFragmentWriter.createInstance(time_stamp));
-       
+
         w.start();
         w.writeAspectElements(profile_elements);
         w.writeAspectElements(context_elements);
@@ -99,7 +92,7 @@ public class Example1 {
         readers.add(ContextFragmentReader.createInstance());
         readers.add(NodesFragmentReader.createInstance());
         readers.add(CartesianLayoutFragmentReader.createInstance());
-        
+
         final CxReader p = CxReader.createInstance(cx_json_str, readers);
 
         while (p.hasNext()) {
@@ -114,7 +107,7 @@ public class Example1 {
             }
         }
         System.out.println();
-        System.out.println("edges time stamp:" + er.getTimeStamp());
+        System.out.println("edges time stamp: " + er.getTimeStamp());
     }
 
 }
