@@ -18,7 +18,6 @@ import org.cxio.core.CxReader;
 import org.cxio.core.CxWriter;
 import org.cxio.core.interfaces.AspectElement;
 import org.cxio.core.interfaces.AspectFragmentReader;
-import org.cxio.util.Util;
 import org.cxiondex.aspects.datamodels.ContextElement;
 import org.cxiondex.aspects.datamodels.ProfileElement;
 import org.cxiondex.aspects.readers.ContextFragmentReader;
@@ -63,12 +62,9 @@ public class Example1 {
         // -------------
         final OutputStream out = new ByteArrayOutputStream();
 
-        final String time_stamp = Util.getCurrentDate();
-
-        final CxWriter w = CxWriter.createInstanceWithAllAvailableWriters(out, true, time_stamp);
-
-        w.addAspectFragmentWriter(ProfileFragmentWriter.createInstance(time_stamp));
-        w.addAspectFragmentWriter(ContextFragmentWriter.createInstance(time_stamp));
+        final CxWriter w = CxWriter.createInstanceWithAllAvailableWriters(out, true);
+        w.addAspectFragmentWriter(ContextFragmentWriter.createInstance());
+        w.addAspectFragmentWriter(ProfileFragmentWriter.createInstance());
 
         w.start();
         w.writeAspectElements(profile_elements);
@@ -85,9 +81,7 @@ public class Example1 {
         // ---------------
         final Set<AspectFragmentReader> readers = new HashSet<>();
 
-        final EdgesFragmentReader er = EdgesFragmentReader.createInstance();
-
-        readers.add(er);
+        readers.add(EdgesFragmentReader.createInstance());
         readers.add(ProfileFragmentReader.createInstance());
         readers.add(ContextFragmentReader.createInstance());
         readers.add(NodesFragmentReader.createInstance());
@@ -106,8 +100,7 @@ public class Example1 {
                 }
             }
         }
-        System.out.println();
-        System.out.println("edges time stamp: " + er.getTimeStamp());
+     
     }
 
 }

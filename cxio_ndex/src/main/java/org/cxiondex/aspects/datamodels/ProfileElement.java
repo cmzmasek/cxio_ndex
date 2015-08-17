@@ -1,9 +1,9 @@
 package org.cxiondex.aspects.datamodels;
 
-import org.cxio.core.interfaces.AspectElement;
+import org.cxio.aspects.datamodels.AbstractAspectElement;
 import org.cxio.util.Util;
 
-public final class ProfileElement implements AspectElement {
+public final class ProfileElement extends AbstractAspectElement {
 
     public final static String NAME         = "profile";
     public final static String PROFILE_NAME = "name";

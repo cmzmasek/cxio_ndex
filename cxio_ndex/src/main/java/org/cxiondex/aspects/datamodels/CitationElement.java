@@ -1,33 +1,100 @@
 package org.cxiondex.aspects.datamodels;
 
-import org.cxio.core.interfaces.AspectElement;
+import java.util.Collection;
 
-public class CitationElement implements AspectElement {
+import org.cxio.aspects.datamodels.AbstractAspectElement;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-    protected static final String CONTRIBUTORS              = "contributors";
-    protected static final String IDENTIFIER                = "identifier";
-    protected static final String IDENTIFIER_TYPE           = "identifierType";
-    protected static final String PROPERTIES                = "properties";
-    protected static final String PRESENTATION_PROPERTIES   = "presentationProperties";
+@JsonIgnoreProperties(ignoreUnknown = true)
 
-    protected static final String PROPERTY_DATA_TYPE        = "dataType";
-    protected static final String PROPERTY_IDENTIFIER       = "identifier";
-    protected static final String PROPERTY_IDENTIFIER_TYPE  = "identifierType";
-    protected static final String PROPERTY_NAME             = "name";
-    protected static final String PROPERTY_PREDICATE_ID     = "predicateId";
-    protected static final String PROPERTY_PREDICATE_STRING = "predicateString";
-    protected static final String PROPERTY_TYPE             = "type";
-    protected static final String PROPERTY_VALUE            = "value";
-    protected static final String PROPERTY_VALUE_ID         = "valueId";
-    protected static final String TITLE                     = "title";
-    protected static final String TYPE                      = "type";
-    public final static String    NAME                      = "citations";
+
+public class CitationElement extends AbstractAspectElement {
+    
+    final public static String NAME           = "Citations";
+    
+    private String title;
+    private Collection<String> contributor;
+    private String identifier;
+    private String citationType;
+    
+    private String description;
+    private Collection<String> edges;
+    private Collection<String> nodes;
+   // private Collection<CXSupport> supports;
     
     
+    public CitationElement() {
+    }
+
     @Override
-    public String getAspectName() {
+    @JsonIgnore
+    public  String getAspectName() {
         return NAME;
     }
-   
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Collection<String> getContributor() {
+        return contributor;
+    }
+
+    public void setContributor(Collection<String> contributor) {
+        this.contributor = contributor;
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    public String getCitationType() {
+        return citationType;
+    }
+
+    public void setCitationType(String citationType) {
+        this.citationType = citationType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Collection<String> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(Collection<String> edges) {
+        this.edges = edges;
+    }
+
+    public Collection<String> getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(Collection<String> nodes) {
+        this.nodes = nodes;
+    }
+
+   // public Collection<CXSupport> getSupports() {
+   //     return supports;
+   // }
+
+   // public void setSupports(Collection<CXSupport> supports) {
+   //     this.supports = supports;
+   // }
 
 }

@@ -2,21 +2,15 @@ package org.cxiondex.aspects.writers;
 
 import java.io.IOException;
 
-import org.cxio.aspects.writers.AbstractAspectFragmentWriter;
+import org.cxio.aspects.writers.AbstractFragmentWriter;
 import org.cxio.util.JsonWriter;
 import org.cxio.core.interfaces.AspectElement;
 import org.cxiondex.aspects.datamodels.ProfileElement;
 
-public class ProfileFragmentWriter extends AbstractAspectFragmentWriter {
+public class ProfileFragmentWriter extends AbstractFragmentWriter {
 
     public static ProfileFragmentWriter createInstance() {
         return new ProfileFragmentWriter();
-    }
-
-    public static ProfileFragmentWriter createInstance(final String time_stamp) {
-        final ProfileFragmentWriter w = new ProfileFragmentWriter();
-        w.setTimeStamp(time_stamp);
-        return w;
     }
 
     private ProfileFragmentWriter() {
