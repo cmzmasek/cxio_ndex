@@ -34,6 +34,7 @@ public class Example1 {
         // --------------------------------------------------------------------
 
         final List<AspectElement> profile_elements = new ArrayList<AspectElement>();
+        
         profile_elements.add(new ProfileElement("mouse net", "network of mouse interactions"));
 
         final List<AspectElement> context_elements = new ArrayList<AspectElement>();

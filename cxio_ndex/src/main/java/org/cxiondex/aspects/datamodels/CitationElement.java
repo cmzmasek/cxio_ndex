@@ -2,14 +2,15 @@ package org.cxiondex.aspects.datamodels;
 
 import java.util.Collection;
 
-import org.cxio.aspects.datamodels.AbstractAspectElement;
+import org.cxio.core.interfaces.AspectElement;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 
-public class CitationElement extends AbstractAspectElement {
+public class CitationElement implements AspectElement {
     
     final public static String NAME           = "Citations";
     
