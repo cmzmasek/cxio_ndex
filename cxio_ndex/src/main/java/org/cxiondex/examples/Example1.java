@@ -63,7 +63,7 @@ public class Example1 {
         // -------------
         final OutputStream out = new ByteArrayOutputStream();
 
-        final CxWriter w = CxWriter.createInstanceWithAllAvailableWriters(out, true);
+        final CxWriter w = CxWriter.createInstanceWithAllAvailableWriters(out, true, true);
         w.addAspectFragmentWriter(ContextFragmentWriter.createInstance());
         w.addAspectFragmentWriter(ProfileFragmentWriter.createInstance());
 
